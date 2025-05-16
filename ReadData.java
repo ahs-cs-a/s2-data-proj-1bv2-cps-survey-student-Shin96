@@ -121,21 +121,20 @@ public class ReadData{
             sum += xy[i][0] * xy[i][1]; 
         }
         return sum / (xy.length - 1);    
-    }   
-    }
+        }   
     
     public void runRegression(){
-        // double[][] xy = getColumns(7,9);
-        // double[][] xyStd = standardUnits(xy);
-        // double correlation = correlation(xyStd);
-        // double slope = correlation * xyStd[1] / xyStd[0];
-        // double[] means = mean(xy)
-        // double intercept = means[1] - slope * means[0];
-        // System.out.println("Correlation: " + correlation);
-        // System.out.println("Slope: " + slope);
-        // System.out.println("Intercept: " + intercept);
-        // Scatter s = new Scatter();
-        // s.displayScatterPlot(xy[0], xy[1]);
+        double[][] xy = getColumns(7,9);
+        double[][] xyStd = standardUnits(xy);
+        double correlation = correlation(xyStd);
+        double[] stdDevs = stdDeviation(xy);
+        double slope = correlation * (stdDevs[1] / stdDevs[0]);
+        double[] means = mean(xy);
+        double intercept = means[1] - slope * means[0];
+
+        System.out.println("Correlation: " + correlation);
+        System.out.println("Slope: " + slope);
+        System.out.println("Intercept: " + intercept);
     }
 
     //this prints the array passed in - you may want this for debugging
